@@ -103,6 +103,6 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
-.idea/workspace.xml
+.idea/**
 
 # End of https://www.gitignore.io/api/intellij
