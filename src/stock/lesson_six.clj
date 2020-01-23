@@ -1,7 +1,8 @@
 (ns stock.lesson-six)
 
 ;; Setting a map
-(def order {:bag { :amount 100 :price 10 }})
+(def order {:bag { :amount 100 :price 10 }}
+  {:t-shirt {:amount 2 :price 0}})
 
 ;; Declaring the functions relative to order
 
@@ -15,5 +16,10 @@
       (map price-product)
       (reduce +)))
 
-;; Function call
+(defn free?
+  [item]
+  (<= (get item :price 0) 0))
+
+
+;; Calculating the order amount
 (println "Total order amount" (total-order-amount order))
