@@ -1,15 +1,19 @@
 (ns stock.lesson-six)
 
 ;; Setting a map
-(def order {:bag { :amount 10 :price 10 }})
+(def order {:bag { :amount 100 :price 10 }})
 
-;; Declaring a function
+;; Declaring the functions relative to order
 
-(defn price-product [[_ value]]
+(defn price-product [value]
   (* (:amount value) (:price value)))
 
-(defn total-order [order]
-  (reduce + (map price-product order) ))
+(defn total-order-amount
+  [order]
+  (->> order
+       vals
+      (map price-product)
+      (reduce +)))
 
 ;; Function call
-(println "Total order amount" (total-order order))
+(println "Total order amount" (total-order-amount order))
