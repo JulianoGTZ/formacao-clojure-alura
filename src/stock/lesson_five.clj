@@ -3,7 +3,6 @@
 ;; Setting a map
 (def order {:bag { :amount 10 :price 10 }})
 
-
 ;; Printing value
 (println "Order value" order)
 
