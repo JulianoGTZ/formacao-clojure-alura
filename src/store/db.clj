@@ -6,7 +6,7 @@
                       :shirt { :id :shirt :amount 44 :unit-price 45}
                       :tennis { :id :tennis :amount 31}}})
 
-(def order2 {:user 16
+(def order2 {:user 15
              :items {
                      :bag { :id :bag :amount 33 :unit-price 80}
                      :shirt { :id :shirt :amount 4 :unit-price 45}
@@ -17,7 +17,7 @@
                      :bag { :id :bag :amount 4 :unit-price 80}
                      :shirt { :id :shirt :amount 4 :unit-price 45}
                      :tennis { :id :tennis :amount 51}}})
-(def order4 {:user 19
+(def order4 {:user 15
              :items {
                      :bag { :id :bag :amount 22 :unit-price 80}
                      :shirt { :id :shirt :amount 4 :unit-price 45}
