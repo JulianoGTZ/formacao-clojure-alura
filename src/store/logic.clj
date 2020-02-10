@@ -1,6 +1,4 @@
-(ns store.logic
-  )
-
+(ns store.logic)
 
 (defn total-item
   [[_ details]]
@@ -26,6 +24,10 @@
    })
 
 (defn resume-per-user [orders]
-  (->>())
+  (->> orders
+       (group-by :user)
+       (map amount-per-user)))
+
+
 
 
