@@ -22,7 +22,7 @@
 (println (map just-print-again (map just-print (range 10))))
 
 ;; checking the lazy/eager behavior on map
-(->> (range10)
+(->> (range 10)
      (map just-print)
      (map just-print-again)
      (println))
