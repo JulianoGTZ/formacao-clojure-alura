@@ -8,6 +8,11 @@
   (println resume)
   (println "Ordered" (sort-by :total-price resume))
   (println "Reverse" (reverse (sort-by :total-price resume)))
+  (println (first resume))
+  (println (count resune))
+  (println (get resume 1))
+  (println (take 2 resume))
+
 
   ;; Example with get-in
   (println (get-in orders [0 :items :bag :amount])))
