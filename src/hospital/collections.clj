@@ -1,17 +1,16 @@
 (ns hospital.collections
-  (:use [clojure pprint]))
+  (:use [clojure pprint])
+  (:require [hospital.model :as h.model]
+            [hospital.logic :as h.logic]))
 
-(defn test-vector
-  []
-  (let [queue [111 222]]
-    (println (conj queue 333))))
+(defn simulates-one-day []
+  "Simulates one day in a hospital"
+  (def hospital (h.model/new-hospital))
+  (pprint (h.logic/arrives-in hospital :queue "222"))
 
-(test-vector)
+  (def hospital (h.logic/attend hospital :laboratory-1))
 
-(defn test-queue []
-  ;;Creating a queue
-  (let [queue (conj clojure.lang.PersistentQueue/EMPTY "111" "222")]
-  (println "Queue")
-  (pprint queue)))
+  (pprint hospital))
 
-(test-queue)
+(simulates-one-day)
+
