@@ -19,9 +19,9 @@
 (defn amount-per-user
   [[user orders]]
   {
-    :user-id user
-    :total-of-orders (count orders)
-    :total-order-value (total-order-value orders)
+   :user-id           user
+   :total-of-orders   (count orders)
+   :total-order-value (total-order-value orders)
    })
 
 ;; Get all orders
