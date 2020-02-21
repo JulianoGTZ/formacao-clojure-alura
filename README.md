@@ -1,4 +1,4 @@
-# A Formação Clojure da Alura
+# Formação Clojure da Alura
 
 Um repositório com as minhas implementações assistindo e fazendo as atividades do Alura.
 
