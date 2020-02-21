@@ -1,10 +1,9 @@
-# Alura Clojure Training
+# A Formação Clojure da Alura
 
-A repo with my implementations doing the clojure training from Alura. :rocket:
+Um repositório com as minhas implementações assistindo e fazendo as atividades do Alura.
 
-## Topics covered
-
-- Principles of functional programming
-- Primitive Types
-- Tail Recursion
-- IntelliJ
+## Tópicos Cobertos
+- Principios de Programação Funcional
+- Tipos Primitivps
+- Recursão de Cauda
+- Funções Parciais
