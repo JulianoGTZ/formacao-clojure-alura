@@ -1,6 +1,6 @@
 (ns hospital.logic)
 
-(defn hospital-is-full?
+(defn full-hospital?
   [hospital department]
   (-> hospital
       (get department)
@@ -9,7 +9,7 @@
 
 (defn arrives-in
   [hospital department people]
-  (if (not (hospital-is-full? hospital department))
+  (if (not (full-hospital? hospital department))
     (update hospital department conj people)
     (throw (ex-info "Hospital is full" {:try-add-people people}))))
 
