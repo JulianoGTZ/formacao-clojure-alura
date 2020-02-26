@@ -4,6 +4,8 @@ Um repositório com as minhas implementações assistindo e fazendo as atividade
 
 ## Tópicos Cobertos
 - Principios de Programação Funcional
-- Tipos Primitivps
+- Tipos Primitivos
 - Recursão de Cauda
 - Funções Parciais
+- Mutabilidade
+- Átomos e Refs
