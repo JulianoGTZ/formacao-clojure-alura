@@ -18,17 +18,17 @@
 
 (defn amount-per-user
   [[user orders]]
-  {
-   :user-id           user
+  {:user-id           user
    :total-of-orders   (count orders)
-   :total-order-value (total-order-value orders)
-   })
+   :total-order-value (total-order-value orders)})
 
 ;; Get all orders
 ;; Group by user key
 ;; Get vals from key-map set
 ;; Map count function
 ;; Print the count
+
+
 (->> (s.db/all-orders)
      (group-by :user)
      (map amount-per-user)

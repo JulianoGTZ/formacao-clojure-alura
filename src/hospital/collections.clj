@@ -1,7 +1,7 @@
 (ns hospital.collections
   (:use [clojure pprint])
-  (:require [hospital.model :as h.model]
-            [hospital.logic :as h.logic]))
+  (:require [hospital.logic :as h.logic]
+            [hospital.model :as h.model]))
 
 (defn simulates-one-day []
   "Simulates one day in a hospital"
@@ -18,11 +18,11 @@
   []
   "Simulates one day using threads"
   (def hospital (h.model/new-hospital))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "111"))))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "222"))))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "333"))))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "444"))))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "555"))))
-  (.start(Thread. (fn [] (h.logic/arrives-in hospital :queue "666")))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "111"))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "222"))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "333"))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "444"))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "555"))))
+  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "666")))))
 
 (simulates-one-day-in-parallel)

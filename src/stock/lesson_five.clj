@@ -8,4 +8,4 @@
 
 ;; Threading example
 (println
-  (-> order :bag :amount))
+ (-> order :bag :amount))

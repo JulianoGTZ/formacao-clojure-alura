@@ -20,7 +20,6 @@
     (pprint lima-hospital)
 
     ;; Swap with update
-    (swap! lima-hospital update :laboratory-1 conj "111")
+    (swap! lima-hospital update :laboratory-1 conj "111")))
 
-    ))
 (test-atom)

@@ -17,11 +17,9 @@
 
 (defn amount-per-user
   [[user orders]]
-  {
-   :user-id           user
+  {:user-id           user
    :total-of-orders   (count orders)
-   :total-order-value (total-order-value orders)
-   })
+   :total-order-value (total-order-value orders)})
 
 (defn resume-per-user [orders]
   (->> orders

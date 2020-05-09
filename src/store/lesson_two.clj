@@ -8,8 +8,7 @@
   ([total-so-far elements]
    (if (seq elements)
      (recur (inc total-so-far) (rest elements))
-     total-so-far))
-  )
+     total-so-far)))
 
 (defn my-count-with-loop
   [elements]

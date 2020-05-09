@@ -22,4 +22,6 @@
 
 
 ;; Calculating the order amount
+
+
 (println "Total order amount" (total-order-amount order))

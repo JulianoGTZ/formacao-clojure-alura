@@ -1,6 +1,6 @@
 (ns store.lesson-five
-  (:require [store.logic :as s.logic]
-            [store.db :as s.db]))
+  (:require [store.db :as s.db]
+            [store.logic :as s.logic]))
 
 (defn spent-a-lot? [user-info]
   (> (:total-order-value user-info) 500))
