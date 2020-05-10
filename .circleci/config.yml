@@ -3,24 +3,27 @@
 # Check https://circleci.com/docs/2.0/language-clojure/ for more details
 #
 version: 2
+
+job_defaults: &defaults
+  # specify the version you desire here
+  - image: circleci/clojure:lein-2.7.1
+
+  # Specify service dependencies here if necessary
+  # CircleCI maintains a library of pre-built images
+  # documented at https://circleci.com/docs/2.0/circleci-images/
+  # - image: circleci/postgres:9.4
+
+  working_directory: ~/repo
+
+  environment:
+    LEIN_ROOT: "true"
+    # Customize the JVM maximum heap limit
+    JVM_OPTS: -Xmx3200m
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/clojure:lein-2.7.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
-    environment:
-      LEIN_ROOT: "true"
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-
+  <<: *defaults
+    #Download and cache dependencies here
     steps:
       - checkout
 
@@ -40,3 +43,37 @@ jobs:
 
       # run tests!
       - run: lein test
+    lint-cljfmt:
+      <<: *defaults
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - bureau-{{ checksum "project.clj" }}
+              # fallback to using the latest cache if no exact match is found
+              - bureau-
+        - run: lein cljfmt check
+
+    lint-nsorg:
+      <<: *defaults
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - bureau-{{ checksum "project.clj" }}
+              # fallback to using the latest cache if no exact match is found
+              - bureau-
+        - run: lein nsorg
+
+workflows:
+  version: 2
+  pull-request-validation:
+    jobs:
+      -buid:
+        context: clojure-build-test
+      - lint-cljfmt:
+          requires:
+            - build
+      - lint-nsorg:
+          requires:
+            - build
