@@ -47,7 +47,6 @@ jobs:
             keys:
               {{ checksum "project.clj" }}
               # fallback to using the latest cache if no exact match is found
-              - bureau-
         - run: lein cljfmt check
 
     lint-nsorg:
@@ -58,7 +57,6 @@ jobs:
             keys:
               {{ checksum "project.clj" }}
               # fallback to using the latest cache if no exact match is found
-              - bureau-
         - run: lein nsorg
 
 workflows:
