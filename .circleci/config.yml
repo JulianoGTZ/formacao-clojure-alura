@@ -18,7 +18,7 @@ job_defaults: &defaults
 
 jobs:
   build:
-    <<: *defaults
+    c<<: *defaults
     #Download and cache dependencies here
     steps:
       - checkout
