@@ -8,7 +8,7 @@ job_defaults: &defaults
   # specify the version you desire here
   docker:
     - image: circleci/clojure:lein-2.7.1
-      
+
   working_directory: ~/repo
 
   environment:
@@ -18,7 +18,7 @@ job_defaults: &defaults
 
 jobs:
   build:
-  <<: *defaults
+    <<: *defaults
     #Download and cache dependencies here
     steps:
       - checkout
