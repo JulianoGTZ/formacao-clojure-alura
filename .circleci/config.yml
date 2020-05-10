@@ -49,7 +49,7 @@ jobs:
         - checkout
         - restore_cache:
             keys:
-              - bureau-{{ checksum "project.clj" }}
+              {{ checksum "project.clj" }}
               # fallback to using the latest cache if no exact match is found
               - bureau-
         - run: lein cljfmt check
@@ -60,7 +60,7 @@ jobs:
         - checkout
         - restore_cache:
             keys:
-              - bureau-{{ checksum "project.clj" }}
+              {{ checksum "project.clj" }}
               # fallback to using the latest cache if no exact match is found
               - bureau-
         - run: lein nsorg
