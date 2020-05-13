@@ -3,8 +3,6 @@
   (:require [hospital.logic :as h.logic]
             [hospital.model :as h.model]))
 
-(def name "Jonas Brother")
-
 (defn test-atom []
   (let [lima-hospital (atom {:queue h.model/empty_queue})]
     (println lima-hospital)
