@@ -1,4 +1,4 @@
-(ns store.lesson-two)
+(ns collections.lesson-two)
 
 ;; Function with override params
 (defn my-count

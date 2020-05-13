@@ -1,6 +1,6 @@
-(ns store.lesson-four
-  (:require [store.db :as s.db]
-            [store.logic :as s.logic]))
+(ns collections.lesson-four
+  (:require [collections.db :as s.db]
+            [collections.logic :as s.logic]))
 
 ;; Examples using Ordered and reverse functions
 (let [resume (s.logic/resume-per-user (s.db/all-orders))
