@@ -1,5 +1,5 @@
 (ns collections.lesson-three
-  (:require [store.db :as s.db]))
+  (:require [collections.db :as s.db]))
 
 (defn total-item
   [[_ details]]
