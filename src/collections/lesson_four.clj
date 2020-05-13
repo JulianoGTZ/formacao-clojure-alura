@@ -1,4 +1,4 @@
-(ns store.lesson-four
+(ns collections.lesson-four
   (:require [store.db :as s.db]
             [store.logic :as s.logic]))
 

@@ -20,8 +20,6 @@
   [item]
   (<= (get item :price 0) 0))
 
-
 ;; Calculating the order amount
-
 
 (println "Total order amount" (total-order-amount order))

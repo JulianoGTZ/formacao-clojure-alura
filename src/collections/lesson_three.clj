@@ -1,4 +1,5 @@
-(ns store.logic)
+(ns collections.lesson-three
+  (:require [store.db :as s.db]))
 
 (defn total-item
   [[_ details]]
@@ -21,11 +22,13 @@
    :total-of-orders   (count orders)
    :total-order-value (total-order-value orders)})
 
-(defn resume-per-user [orders]
-  (->> orders
-       (group-by :user)
-       (map amount-per-user)))
+;; Get all orders
+;; Group by user key
+;; Get vals from key-map set
+;; Map count function
+;; Print the count
 
-
-
-
+(->> (s.db/all-orders)
+     (group-by :user)
+     (map amount-per-user)
+     println)
