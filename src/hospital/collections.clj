@@ -12,17 +12,23 @@
 
   (pprint hospital))
 
-#_(simulates-one-day)
+(defn arrives-in-with-bad-pratices!
+  [hospital people]
+  (swap! hospital h.logic/arrives-in-with-delay-and-log :queue people)
+  (println "After insert the people" people))
 
+#_(simulates-one-day)
 (defn simulates-one-day-in-parallel
   []
   "Simulates one day using threads"
-  (def hospital (h.model/new-hospital))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "111"))))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "222"))))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "333"))))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "444"))))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "555"))))
-  (.start (Thread. (fn [] (h.logic/arrives-in hospital :queue "666")))))
+  (let [hospital (atom (h.model/new-hospital))]
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "111"))))
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "222"))))
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "333"))))
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "444"))))
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "555"))))
+    (.start (Thread. (fn [] (arrives-in-with-bad-pratices! hospital "666"))))
+    (.start (Thread. (fn [] (Thread/sleep 4000)
+                       (pprint hospital))))))
 
 (simulates-one-day-in-parallel)
