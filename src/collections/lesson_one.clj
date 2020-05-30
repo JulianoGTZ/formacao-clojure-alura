@@ -1,4 +1,4 @@
-(ns store.lesson-one)
+(ns collections.lesson-one)
 
 ;; call my map using Tail Recursion
 (defn my-map

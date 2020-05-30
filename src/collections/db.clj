@@ -1,4 +1,4 @@
-(ns store.db)
+(ns collections.db)
 
 (def order1 {:user  15
              :items {:bag    {:id :bag :amount 12 :unit-price 80}
