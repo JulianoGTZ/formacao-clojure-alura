@@ -42,4 +42,15 @@
     (.start (Thread. (fn [] (Thread/sleep 4000)
                        (pprint hospital))))))
 
-(simulates-one-day-in-parallel-with-doseq)
+(defn simulates-one-day-in-parallel-with-dotimes
+  []
+  "Simulates one day using threads"
+  (let [hospital      (atom (h.model/new-hospital))
+        people        ["111" "222" "333" "444" "555" "666"]]
+    (dotimes [person 6]
+      (start-thread! hospital person))
+
+    (.start (Thread. (fn [] (Thread/sleep 4000)
+                       (pprint hospital))))))
+
+(simulates-one-day-in-parallel-with-dotimes)
