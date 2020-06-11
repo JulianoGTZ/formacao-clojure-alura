@@ -19,7 +19,7 @@
 
 (defn start-thread!
   ([hospital person]
-     (.start (Thread. (fn [] (arrives-in-with-bad-practices! hospital person))))))
+   (.start (Thread. (fn [] (arrives-in-with-bad-practices! hospital person))))))
 
 (defn simulates-one-day-in-parallel
   []
