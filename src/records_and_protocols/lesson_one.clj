@@ -1,4 +1,4 @@
-(ns records-and-protocols.lesson-1
+(ns records-and-protocols.lesson-one
   (:use clojure.pprint))
 
 (defn add-patient
