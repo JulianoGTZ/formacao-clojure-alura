@@ -44,8 +44,8 @@
   (future
     (Thread/sleep (rand 5000))
     (dosync
-      (println "Trying to add this people" person)
-      (arrives-in-by-alter-function! hospital person))))
+     (println "Trying to add this people" person)
+     (arrives-in-by-alter-function! hospital person))))
 
 (defn simulate-one-day-async!
   []
@@ -59,6 +59,5 @@
         (Thread/sleep 2000)
         (pprint hospital)
         (pprint futures)))))
-
 
 (simulate-one-day-async!)
