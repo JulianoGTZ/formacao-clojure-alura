@@ -19,7 +19,7 @@
   (load! [this id]))
 
 (defrecord Cache
-  [cache loader]
+           [cache loader]
   Loadable
   (load! [this id]
     (swap! cache load-when-is-not-cached id loader)
