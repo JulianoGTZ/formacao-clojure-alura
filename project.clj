@@ -29,7 +29,8 @@
                      system-map         [[:block 0]]
                      request-context    [[:block 1]]}}
 
-  :dependencies [[org.clojure/clojure "1.10.0"]]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [prismatic/schema "1.1.12"]]
 
   :aliases {"lint"            ["do" ["cljfmt" "check"] ["nsorg"]]
             "lint-fix"        ["do" ["cljfmt" "fix"] ["nsorg" "--replace"]]}
