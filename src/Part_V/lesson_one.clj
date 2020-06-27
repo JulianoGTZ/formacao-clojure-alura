@@ -25,10 +25,10 @@
         jhonny {:id 25 :name "Johnny"}
         patients (reduce add-patient {} [john mary jhonny])
         visits {}]
-        (add-visit visits 25 ["01/01/2010"])
-        (add-visit visits 25 ["01/01/2010"])
-        (add-visit visits 25 ["01/01/2010"])
-        (print-report visits 5)))
+    (add-visit visits 25 ["01/01/2010"])
+    (add-visit visits 25 ["01/01/2010"])
+    (add-visit visits 25 ["01/01/2010"])
+    (print-report visits 5)))
 
 (test-patient-use)
 
@@ -40,7 +40,7 @@
 (s/defn new-patient
   [id :- Long
    name :- s/Str]
- {:id id :name name})
+  {:id id :name name})
 
 (new-patient 10 "111")
 (new-patient "1" 1)
