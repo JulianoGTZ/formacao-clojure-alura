@@ -17,4 +17,3 @@
 
 (let [john {:id 20 :name "Roadrigoan" :plan [:x-ray]}]
   (pprint (s/validate Patients {15 john})))
-
