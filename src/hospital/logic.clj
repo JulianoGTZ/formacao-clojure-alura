@@ -2,10 +2,10 @@
 
 (defn full-hospital?
   [hospital department]
-  (-> hospital
-      (get department)
-      count
-      (>= 5)))
+  (some-> hospital
+          department
+          count
+          (>= 5)))
 
 (defn arrives-in
   [hospital department people]
