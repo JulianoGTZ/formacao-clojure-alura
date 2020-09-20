@@ -1,8 +1,10 @@
 (ns hospital.logic-test
   (:require [clojure.test :refer :all]
             [hospital.logic]
-            [hospital.model :as h.model]))
+            [hospital.model :as h.model]
+            [schema.core :as s]))
 
+(s/set-fn-validation! true)
 (def empty_queue clojure.lang.PersistentQueue/EMPTY)
 
 (deftest on-full-hospital?
@@ -30,17 +32,20 @@
 
 (deftest on-transfer
   (testing "Should transfer people when its possible"
-    (let [hospital {:queue [5] :x-ray []}]
-      (is (= {:queue [] :x-ray [5]}
+    (let [patient  {:id "5"}
+          hospital {:queue (conj h.model/empty_queue patient) :x-ray hospital.model/empty_queue}]
+      (is (= {:queue hospital.model/empty_queue :x-ray [patient]}
              (hospital.logic/transfer hospital :queue :x-ray)))))
 
   (testing "Should transfer people in the right order. First-in, First-out"
-    (let [hospital {:queue (conj h.model/empty_queue 51 5) :x-ray (conj h.model/empty_queue 13)}]
-      (is (= {:queue [5] :x-ray [13 51]}
+    (let [john     {:id "5"}
+          maria    {:id "51"}
+          afonso   {:id "13"}
+          hospital {:queue (conj h.model/empty_queue maria john) :x-ray (conj h.model/empty_queue afonso)}]
+      (is (= {:queue [john] :x-ray [afonso maria]}
              (hospital.logic/transfer hospital :queue :x-ray)))))
-
   (testing "Should not transfer people when its impossible"
-    (let [hospital {:queue [5] :x-ray [1 2 4 5 6]}]
+    (let [john     {:id "5"}
+          hospital {:queue (conj h.model/empty_queue john) :x-ray (conj h.model/empty_queue {:id "1"} {:id "2"} {:id "4"} {:id "5"} {:id "6"})}]
       (is (thrown-with-msg? clojure.lang.ExceptionInfo #"Hospital is full"
                             (hospital.logic/transfer hospital :queue :x-ray))))))
-
