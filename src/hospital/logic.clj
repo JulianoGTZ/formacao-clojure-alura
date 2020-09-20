@@ -1,4 +1,6 @@
-(ns hospital.logic)
+(ns hospital.logic
+  (:require [hospital.model :as h.model]
+            [schema.core :as s]))
 
 (defn full-hospital?
   [hospital department]
@@ -29,8 +31,9 @@
       (update hospital department conj people))
     (throw (ex-info "Queue is fully already" {:try-add-people people}))))
 
-(defn attend
-  [hospital department]
+(s/defn attend :- h.model/Hospital
+  [hospital :- h.model/Hospital
+   department :- s/Keyword]
   (update hospital department pop))
 
 (defn getNextPerson
@@ -40,9 +43,11 @@
       department
       peek))
 
-(defn transfer
+(s/defn transfer :- h.model/Hospital
   "Transfer the next patient from a line to another"
-  [hospital from-department to-department]
+  [hospital :- h.model/Hospital
+   from-department :- s/Keyword
+   to-department :- s/Keyword]
   (let [people (getNextPerson hospital from-department)]
     (-> hospital
         (attend from-department)
@@ -51,13 +56,13 @@
 (defn attend-and-return-person
   [hospital department]
   {:patient  (update hospital department peek)
-   :hospital    (update hospital department pop)})
+   :hospital (update hospital department pop)})
 
 (defn attend-and-return-person-with-both-approachs
   [hospital department]
-  (let [queue                  (get hospital department)
-        peek-pop               (juxt peek pop)
+  (let [queue            (get hospital department)
+        peek-pop         (juxt peek pop)
         [person updated-queue] (peek-pop queue)
-        updated-hospital       (update hospital assoc department updated-queue)]
-    {:patient     person
-     :hospital    updated-hospital}))
+        updated-hospital (update hospital assoc department updated-queue)]
+    {:patient  person
+     :hospital updated-hospital}))
