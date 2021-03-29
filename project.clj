@@ -30,7 +30,8 @@
                      request-context    [[:block 1]]}}
 
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [prismatic/schema "1.1.12"]]
+                 [prismatic/schema "1.1.12"]
+                 [org.clojure/test.check "1.1.0"]]
 
   :aliases {"lint"            ["do" ["cljfmt" "check"] ["nsorg"]]
             "lint-fix"        ["do" ["cljfmt" "fix"] ["nsorg" "--replace"]]}
